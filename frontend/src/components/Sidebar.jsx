@@ -16,14 +16,13 @@ const Sidebar = () => {
     const token = localStorage.getItem("token");
     const formData = new FormData(e.target);
 
-    // Muutetaan FormData JSON:ksi
     const data = Object.fromEntries(formData.entries());
     console.log(data);
     try {
       const response = await fetch("http://localhost:5001/tasks", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // Sisältötyypin asettaminen JSON-muotoon
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
 
@@ -92,7 +91,7 @@ const Sidebar = () => {
               backdropFilter: "blur(5px)",
               zIndex: 999,
             }}
-            onClick={() => setShowPortal(false)} // Close modal on clicking outside
+            onClick={() => setShowPortal(false)}
           ></div>
           <div
             style={{

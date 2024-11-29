@@ -1,34 +1,31 @@
-// import React from "react";
-// import Header from "./Header";
-// import Sidebar from "./Sidebar";
-// import TasksOverview from "./TasksOverview";
-// import RoomsOverview from "./RoomsOverview";
-// import "./App.css";
-
-// function Dashboard() {
-//   return (
-//     <div className="dashboard-container">
-//       <h1>Dashboard Page</h1>
-//       <Sidebar />
-//       <div className="main-content">
-//         <Header />
-//         <TasksOverview />
-//         <RoomsOverview />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Dashboard;
-
 import React from "react";
+import logo from "../components/askareappi.png";
+import "../App.css";
 
 const Dashboard = () => {
   const storedToken = localStorage.getItem("token");
   console.log(storedToken);
   return (
-    <div className="dashboard-container">
-      <h1>Dashboard</h1>
+    <div>
+      <img
+        src={logo}
+        alt="logo"
+        style={{ width: "20%", height: "11%", marginTop: "0" }}
+      />
+      <section className="dashboard-container">
+        <p style={{ marginTop: "20px", fontSize: "18px", color: "#555" }}>
+          Welcome to AskareAppi, your personal task management solution for a
+          clean and organized home. You can add new tasks, mark them as
+          completed, and keep track of your progress. Get started by clicking on
+          the "Add New Task" button in the sidebar.
+        </p>
+      </section>
+      <section className="dashboard-container">
+        <p style={{ marginTop: "20px", fontSize: "18px", color: "#555" }}>
+          This page is under development and will soon feature fun graphics to
+          motivate you with your tasks.
+        </p>
+      </section>
     </div>
   );
 };
