@@ -39,7 +39,7 @@ const TasksPage = () => {
     setTodaysTasks((prevTasks) => updateTaskInList(prevTasks));
     setUpcomingTasks((prevTasks) => updateTaskInList(prevTasks));
 
-    await fetch(`http://localhost:5001/tasks/${taskId}/toggle`, {
+    await fetch(`${API_URL}/tasks/${taskId}/toggle`, {
       method: "PATCH",
       credentials: true,
     })
