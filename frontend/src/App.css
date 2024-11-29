@@ -1,0 +1,292 @@
+/* General  */
+@import url("https://fonts.cdnfonts.com/css/poppins");
+body,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+.main-content {
+  flex-grow: 1;
+  margin-left: 250px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+}
+
+/* Body */
+body {
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Dashboard */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff;
+  border-right: 1px solid #e4e4e4;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 25px 0 0 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+.sidebar button.add-task-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #8380fe;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 15px 20px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.add-task-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.add-task-text {
+  font-size: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  margin-bottom: 20px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.menu-link:hover {
+  background-color: #f0eaff;
+  color: #917bff;
+}
+
+.menu-item.active .menu-link {
+  color: #917bff;
+  border-radius: 10px;
+}
+
+/* Header Styling */
+.header {
+  background-color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header .date-section span {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.header .language-selector select {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Main Content Styling */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Tasks Overview */
+.tasks-overview {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tasks-overview div {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-overview h2 {
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  color: #c4b9e3;
+}
+
+/* Rooms Overview */
+.rooms-overview {
+  margin-top: 20px;
+}
+
+.rooms-overview h2 {
+  margin-bottom: 15px;
+  color: #c4b9e3;
+}
+
+.room-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.room-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Progress Styling */
+progress {
+  width: 100%;
+  height: 10px;
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #c4b9e3;
+  border-radius: 5px;
+}
+
+/* Settings Page */
+.settings-page {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settings-option {
+  margin-bottom: 20px;
+}
+
+.settings-option label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.settings-option select,
+.settings-option button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+}
+
+.settings-option button {
+  margin-right: 10px;
+  background-color: #c4b9e3;
+  color: #fff;
+}
+
+/* Tasks Page */
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.today-tasks,
+.overdue-tasks,
+.upcoming-tasks {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.task-status {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.task-status.not-done {
+  background-color: gray;
+}
+
+.task-status.completed {
+  background-color: #8380fe;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
