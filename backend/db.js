@@ -25,15 +25,15 @@ async function executeSqlFile(fileName) {
   }
 }
 
-async function setupDatabase() {
-  try {
-    console.log("Starting database setup...");
-    await executeSqlFile("create_tables.sql");
-    await executeSqlFile("tasks.sql");
-    console.log("Database setup complete!");
-  } catch (err) {
-    console.error("Error setting up the database:", err);
-  }
-}
+// async function setupDatabase() {
+//   try {
+//     console.log("Starting database setup...");
+//     await executeSqlFile("create_tables.sql");
+//     await executeSqlFile("tasks.sql");
+//     console.log("Database setup complete!");
+//   } catch (err) {
+//     console.error("Error setting up the database:", err);
+//   }
+// }
 
 module.exports = { pool, setupDatabase };

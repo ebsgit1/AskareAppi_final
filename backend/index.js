@@ -3,7 +3,7 @@ const cors = require("cors");
 const { pool, setupDatabase } = require("./db");
 
 require("dotenv").config();
-setupDatabase();
+// setupDatabase();
 
 const app = express();
 app.use(
