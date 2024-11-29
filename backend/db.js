@@ -36,4 +36,4 @@ async function executeSqlFile(fileName) {
 //   }
 // }
 
-module.exports = { pool, setupDatabase };
+module.exports = { pool };
