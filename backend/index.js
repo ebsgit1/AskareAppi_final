@@ -187,7 +187,7 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "../frontend/public ")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/public", "index.html"));
+  res.sendfile(path.join(__dirname, "../frontend/public", "index.html"));
 });
 
 app.listen(PORT, () => {
