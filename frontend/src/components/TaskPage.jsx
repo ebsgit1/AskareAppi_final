@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import logo from "../components/askareappi.png";
 
+// Use the REACT_APP_API_URL environment variable
+const API_URL = process.env.REACT_APP_API_URL;
+
 const TasksPage = () => {
   const [overdueTasks, setOverdueTasks] = useState([]);
   const [todaysTasks, setTodaysTasks] = useState([]);
@@ -9,7 +12,7 @@ const TasksPage = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("http://localhost:5001/tasks")
+    fetch(`${API_URL}/tasks`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
