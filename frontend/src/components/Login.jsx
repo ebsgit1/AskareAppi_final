@@ -36,11 +36,19 @@ const LogIn = () => {
         body,
       });
 
+      console.log("Response status:", response.status);
+      console.log("Response text:", await response.clone().text());
+
       if (!response.ok) {
-        const errorData = await response.json();
-        setErrorMessage(
-          errorData.message || "An error occurred. Please try again."
-        );
+        let errorMessage = "An error occurred. Please try again.";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch {
+          const errorText = await response.text();
+          errorMessage = errorText || errorMessage;
+        }
+        setErrorMessage(errorMessage);
         return;
       }
 
