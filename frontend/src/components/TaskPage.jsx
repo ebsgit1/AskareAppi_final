@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
+import logo from "../components/askareappi.png";
 
 const TasksPage = () => {
   const [overdueTasks, setOverdueTasks] = useState([]);
@@ -38,7 +39,7 @@ const TasksPage = () => {
     setTodaysTasks((prevTasks) => updateTaskInList(prevTasks));
     setUpcomingTasks((prevTasks) => updateTaskInList(prevTasks));
 
-    await fetch(`http://localhost:5001/tasks/${taskId}/toggle`, {
+    await fetch(`${API_URL}/tasks/${taskId}/toggle`, {
       method: "PATCH",
       credentials: true,
     })
@@ -60,7 +61,12 @@ const TasksPage = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div>
+      <img
+        src={logo}
+        alt="logo"
+        style={{ width: "20%", height: "11%", marginTop: "0" }}
+      />
       <h1>Tasks</h1>
       <div className="task-container">
         <section className="today-tasks">

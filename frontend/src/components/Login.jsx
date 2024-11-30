@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useAuth } from "./AuthProvider";
 
+const API_URL =
+  process.env.REACT_APP_API_URL || "https://askareappi-final.onrender.com";
+
 const LogIn = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [email, setEmail] = useState("");
@@ -21,9 +24,7 @@ const LogIn = () => {
     }
 
     try {
-      const url = isLoginMode
-        ? "http://localhost:5001/login"
-        : "http://localhost:5001/signup";
+      const url = isLoginMode ? `${API_URL}/login` : `${API_URL}/signup`;
 
       const body = JSON.stringify(
         isLoginMode ? { email, password } : { name, email, password }

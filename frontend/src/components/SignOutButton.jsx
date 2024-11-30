@@ -7,8 +7,8 @@ const SignOutButton = () => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
-    logout(); // Clear JWT and authentication state
-    navigate("/login"); // Redirect to login page
+    logout();
+    navigate("/login");
   };
 
   return (
@@ -17,10 +17,13 @@ const SignOutButton = () => {
       style={{
         backgroundColor: "white",
         padding: "10px",
-        borderRadius: "20px",
+        borderRadius: "100px",
+        border: "1px solid #8380fe",
+        allignItems: "center",
+        width: "300px",
       }}
-      onMouseEnter={(e) => (e.target.style.backgroundColor = "#0056b3")}
-      onMouseLeave={(e) => (e.target.style.backgroundColor = "#007BFF")}
+      onMouseEnter={(e) => (e.target.style.backgroundColor = "#8380fe")}
+      onMouseLeave={(e) => (e.target.style.backgroundColor = "#fff")}
     >
       Sign Out
     </button>

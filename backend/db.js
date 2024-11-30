@@ -3,13 +3,11 @@ const fs = require("fs");
 const path = require("path");
 
 const pool = new Pool({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-  password: process.env.PGPASSWORD,
-  port: process.env.PGPORT,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
-
 function getSqlFilePath(fileName) {
   return path.resolve(__dirname, "./database/sql", fileName);
 }
@@ -27,15 +25,15 @@ async function executeSqlFile(fileName) {
   }
 }
 
-async function setupDatabase() {
-  try {
-    console.log("Starting database setup...");
-    await executeSqlFile("create_tables.sql");
-    await executeSqlFile("tasks.sql");
-    console.log("Database setup complete!");
-  } catch (err) {
-    console.error("Error setting up the database:", err);
-  }
-}
+// async function setupDatabase() {
+//   try {
+//     console.log("Starting database setup...");
+//     await executeSqlFile("create_tables.sql");
+//     await executeSqlFile("tasks.sql");
+//     console.log("Database setup complete!");
+//   } catch (err) {
+//     console.error("Error setting up the database:", err);
+//   }
+// }
 
-module.exports = { pool, setupDatabase };
+module.exports = { pool };
