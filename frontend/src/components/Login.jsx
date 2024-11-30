@@ -28,6 +28,7 @@ const LogIn = () => {
         isLoginMode ? { email, password } : { name, email, password }
       );
       console.log(body);
+
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -36,27 +37,34 @@ const LogIn = () => {
         body,
       });
 
+      // Log status and response without reading the body multiple times
       console.log("Response status:", response.status);
-      console.log("Response text:", await response.clone().text());
+
+      let responseText = null;
+      try {
+        // Attempt to parse the response as JSON
+        responseText = await response.json();
+      } catch (err) {
+        // Fallback to reading plain text if JSON parsing fails
+        responseText = await response.text();
+      }
 
       if (!response.ok) {
-        let errorMessage = "An error occurred. Please try again.";
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.message || errorMessage;
-        } catch {
-          const errorText = await response.text();
-          errorMessage = errorText || errorMessage;
-        }
+        const errorMessage =
+          (responseText && responseText.message) ||
+          responseText ||
+          "An error occurred. Please try again.";
         setErrorMessage(errorMessage);
         return;
       }
 
-      const data = await response.json();
-      console.log(isLoginMode ? "Login Success:" : "Sign-Up Success:", data);
+      console.log(
+        isLoginMode ? "Login Success:" : "Sign-Up Success:",
+        responseText
+      );
 
       if (isLoginMode) {
-        login(data.token);
+        login(responseText.token);
         setSuccessMessage("Login successful!");
         window.location.href = "/";
       } else {
@@ -64,7 +72,7 @@ const LogIn = () => {
         setIsLoginMode(true);
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error during submission:", error);
       setErrorMessage("An error occurred. Please try again.");
     }
   };
