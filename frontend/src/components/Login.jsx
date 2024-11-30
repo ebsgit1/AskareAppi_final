@@ -37,22 +37,20 @@ const LogIn = () => {
         body,
       });
 
-      // Log status and response without reading the body multiple times
       console.log("Response status:", response.status);
 
-      let responseText = null;
+      // Read the response body only once
+      let responseData;
       try {
-        // Attempt to parse the response as JSON
-        responseText = await response.json();
-      } catch (err) {
-        // Fallback to reading plain text if JSON parsing fails
-        responseText = await response.text();
+        responseData = await response.json(); // Try parsing JSON
+      } catch {
+        responseData = await response.text(); // Fallback to plain text
       }
 
       if (!response.ok) {
         const errorMessage =
-          (responseText && responseText.message) ||
-          responseText ||
+          (typeof responseData === "object" && responseData.message) ||
+          responseData ||
           "An error occurred. Please try again.";
         setErrorMessage(errorMessage);
         return;
@@ -60,11 +58,11 @@ const LogIn = () => {
 
       console.log(
         isLoginMode ? "Login Success:" : "Sign-Up Success:",
-        responseText
+        responseData
       );
 
       if (isLoginMode) {
-        login(responseText.token);
+        login(responseData.token);
         setSuccessMessage("Login successful!");
         window.location.href = "/";
       } else {
