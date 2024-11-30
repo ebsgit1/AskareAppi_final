@@ -8,7 +8,7 @@ require("dotenv").config();
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://askareappi-final-1.onrender.com/",
     methods: ["GET", "POST", "PATCH"],
   })
 );
