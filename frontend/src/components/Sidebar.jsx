@@ -6,8 +6,7 @@ import Portal from "./Portal";
 import "./Sidebar.css";
 import SignOutButton from "./SignOutButton";
 import { useAuth } from "./AuthProvider";
-const API_URL =
-  process.env.REACT_APP_API_URL || "https://askareappi-final.onrender.com";
+const API_URL = "https://askareappi-final-i2hd.onrender.com";
 
 const Sidebar = () => {
   const location = useLocation();

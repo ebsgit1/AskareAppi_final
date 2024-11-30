@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "./AuthProvider";
-
-const API_URL =
-  process.env.REACT_APP_API_URL || "https://askareappi-final.onrender.com";
+const API_URL = "https://askareappi-final-i2hd.onrender.com";
 
 const LogIn = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);

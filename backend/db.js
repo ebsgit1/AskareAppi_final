@@ -8,22 +8,23 @@ const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
-function getSqlFilePath(fileName) {
-  return path.resolve(__dirname, "./database/sql", fileName);
-}
 
-async function executeSqlFile(fileName) {
-  const sqlFilePath = getSqlFilePath(fileName);
+// function getSqlFilePath(fileName) {
+//   return path.resolve(__dirname, "./database/sql", fileName);
+// }
 
-  try {
-    console.log(`Reading SQL file: ${sqlFilePath}`);
-    const sql = fs.readFileSync(sqlFilePath, "utf8");
-    await pool.query(sql);
-    console.log(`${fileName} executed successfully`);
-  } catch (error) {
-    console.error(`Error executing ${fileName}:`, error);
-  }
-}
+// async function executeSqlFile(fileName) {
+//   const sqlFilePath = getSqlFilePath(fileName);
+
+//   try {
+//     console.log(`Reading SQL file: ${sqlFilePath}`);
+//     const sql = fs.readFileSync(sqlFilePath, "utf8");
+//     await pool.query(sql);
+//     console.log(`${fileName} executed successfully`);
+//   } catch (error) {
+//     console.error(`Error executing ${fileName}:`, error);
+//   }
+// }
 
 // async function setupDatabase() {
 //   try {

@@ -1,21 +1,6 @@
-# Step 1: Build frontend
-FROM node:16 AS frontend
-WORKDIR /app/frontend
-COPY frontend/package*.json ./
-RUN npm install
-COPY frontend/ .
-RUN npm run build
-
-# Step 2: Build backend
-FROM node:16 AS backend
+FROM node:20
 WORKDIR /app
-COPY backend/package*.json ./
+COPY package*.json ./
 RUN npm install
-COPY backend/ .
-COPY --from=frontend /app/frontend/build ./build
-
-# Expose port
-EXPOSE 5001
-
-# Start the backend server
-CMD ["node", "index.js"]
+COPY . .
+CMD ["database:5432", "--", "npm", "run", "dev"]
