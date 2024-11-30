@@ -1,7 +1,9 @@
 FROM node:18 AS build
-WORKDIR /app
 COPY package*.json ./
-RUN npm install
+WORKDIR /app/frontend
+RUN npm install && npm run build
+WORKDIR /app
+COPY --from=build /app/frontend/build /app/frontend/build
 COPY . ./
 RUN npm run build
 
