@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const { pool } = require("./db");
-app.use(cors());
 
 require("dotenv").config();
 // setupDatabase();
 
 const app = express();
+app.use(cors());
 app.use(
   cors({
     origin: "https://askareappi-final-1.onrender.com/",
