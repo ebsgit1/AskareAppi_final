@@ -6,10 +6,9 @@ require("dotenv").config();
 // setupDatabase();
 
 const app = express();
-app.use(cors());
 app.use(
   cors({
-    origin: "https://askareappi-final-1.onrender.com/",
+    origin: "https://askareappi-final-1.onrender.com",
     methods: ["GET", "POST", "PATCH"],
   })
 );
