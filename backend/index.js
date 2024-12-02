@@ -30,6 +30,17 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+app.get("/test-db", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT NOW()");
+    console.log("Database connected. Time:", result.rows[0]);
+    res.status(200).send("Database connection successful.");
+  } catch (err) {
+    console.error("Database connection failed:", err);
+    res.status(500).send("Database connection failed.");
+  }
+});
+
 app.get("/tasks", async (req, res) => {
   try {
     const today = new Date().toISOString().split("T")[0];
