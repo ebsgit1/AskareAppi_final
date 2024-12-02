@@ -64,7 +64,7 @@ app.get("/tasks", async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -90,7 +90,7 @@ app.patch("/tasks/:id/toggle", async (req, res) => {
     res.json(updateTask.rows[0]);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -114,7 +114,7 @@ app.post("/tasks", async (req, res) => {
     res.json(newTask.rows[0]);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -147,7 +147,7 @@ app.post("/signup", async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -176,7 +176,7 @@ app.post("/login", async (req, res) => {
     res.send({ token });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
