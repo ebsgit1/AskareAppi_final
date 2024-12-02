@@ -1,12 +1,21 @@
 const { Pool } = require("pg");
-const fs = require("fs");
-const path = require("path");
+// const fs = require("fs");
+// const path = require("path");
+
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  user: process.env.DB_USER || "your_username",
+  host: process.env.DB_HOST || "localhost",
+  database: process.env.DB_NAME || "your_database",
+  password: process.env.DB_PASSWORD || "your_password",
+  port: process.env.DB_PORT || 5432,
+  // ssl: { rejectUnauthorized: false },
 });
 
 // function getSqlFilePath(fileName) {

@@ -121,22 +121,30 @@ app.post("/tasks", async (req, res) => {
 app.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    console.log(name, email, password);
+    console.log("Signup request received:", { name, email, password });
+
+    // Check for existing user
     const existingUser = await pool.query(
       "SELECT * FROM users WHERE email = $1",
       [email]
     );
+    console.log("Existing user query result:", existingUser.rows);
 
     if (existingUser.rows.length > 0) {
+      console.log("Email already exists:", email);
       return res.status(400).json({ message: "Email already exists" });
     }
 
+    // Hash the password (currently just using plain password as a placeholder)
     const hashedPassword = password;
+    console.log("Password hashed (or placeholder used):", hashedPassword);
 
+    // Insert new user
     const newUser = await pool.query(
       "INSERT INTO users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING *",
       [name, email, hashedPassword]
     );
+    console.log("New user inserted:", newUser.rows);
 
     res.status(201).json({
       user: {
@@ -146,7 +154,7 @@ app.post("/signup", async (req, res) => {
       },
     });
   } catch (err) {
-    console.error(err.message);
+    console.error("Error in /signup route:", err.stack); // Log full error details
     res.status(500).json({ message: "Internal server error" });
   }
 });
