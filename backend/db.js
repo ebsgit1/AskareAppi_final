@@ -1,4 +1,5 @@
 const { Pool } = require("pg");
+require("dotenv").config();
 // const fs = require("fs");
 // const path = require("path");
 
@@ -10,12 +11,12 @@ const { Pool } = require("pg");
 // });
 
 const pool = new Pool({
-  user: process.env.DB_USER || "your_username",
-  host: process.env.DB_HOST || "localhost",
-  database: process.env.DB_NAME || "your_database",
-  password: process.env.DB_PASSWORD || "your_password",
-  port: process.env.DB_PORT || 5432,
-  // ssl: { rejectUnauthorized: false },
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  ssl: { rejectUnauthorized: false },
 });
 
 // function getSqlFilePath(fileName) {
